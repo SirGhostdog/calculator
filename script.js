@@ -5,7 +5,9 @@ function mathSubtract(a, b){
     return a - b
 }
 function mathDivide(a,b) {
-    return a / b
+    if (b == 0) {
+        return "NO! BAD!"
+    } else {return a / b}
 }
 function mathMultiply(a,b) {
     return a * b
@@ -33,6 +35,8 @@ const calcbuttons = document.querySelectorAll(".calcbutton")
 let firstNumber = []
 let operator;
 let secondNumber = []
+
+
 
 one.addEventListener("click", () => {
     if (operator == undefined) {
@@ -99,8 +103,8 @@ nine.addEventListener("click", () => {
 })
 zero.addEventListener("click", () => {
     if (operator == undefined) {
-        firstNumber.push(1)
-    } else {secondNumber.push(1)}
+        firstNumber.push(0)
+    } else {secondNumber.push(0)}
     
     console.log(`Math: ${firstNumber} ${operator} ${secondNumber}`)
 })
@@ -126,10 +130,23 @@ clr.addEventListener("click", () => {
 dlt.addEventListener("click", () => {
 
 })
+
 equals.addEventListener("click", () => {
-
+    let singleFirst = Number(firstNumber.join(''));
+    let singleSecond = Number(secondNumber.join(''));
+    if (operator == "+") {
+        console.log(mathAdd(singleFirst,singleSecond))
+    } else if (operator == "-") {
+        console.log(mathSubtract(singleFirst,singleSecond))
+    } else if (operator == "*") {
+        console.log(mathMultiply(singleFirst,singleSecond))
+    } else if (operator == "/") {
+        console.log(mathDivide(singleFirst,singleSecond))
+    }
+firstNumber = []
+operator = undefined
+secondNumber = []
 })
-
 
 
 
