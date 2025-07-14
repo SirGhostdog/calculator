@@ -125,7 +125,10 @@ divide.addEventListener("click", () => {
  console.log(`Math: ${firstNumber} ${operator} ${secondNumber}`)
 })
 clr.addEventListener("click", () => {
- 
+firstNumber = []
+operator = undefined
+secondNumber = []
+console.log(firstNumber,secondNumber)
 })
 dlt.addEventListener("click", () => {
 
