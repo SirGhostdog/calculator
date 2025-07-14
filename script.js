@@ -37,10 +37,10 @@ const calcbuttons = document.querySelectorAll(".calcbutton");
 let firstNumber = [];
 let operator;
 let secondNumber = [];
+
+
 let singleFirst;
 let singleSecond;
-
-
 
 
 one.addEventListener("click", () => {
@@ -50,6 +50,7 @@ one.addEventListener("click", () => {
     } else {secondNumber.push(1);
         singleSecond = Number(secondNumber.join(''));
     }
+
     display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
 })
 two.addEventListener("click", () => {
@@ -142,46 +143,84 @@ zero.addEventListener("click", () => {
     
     display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
 })
+
+
+
 add.addEventListener("click", () => {
-    if (!firstNumber){
-        return false
-    } else {operator = "+"}
+    if (operator == undefined){
+        operator = "+"
+    } else {
+        operate(singleFirst,singleSecond);
+        operator = "+";
+    }
  
- display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
+    display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
 })
+
 subtract.addEventListener("click", () => {
- operator = "-"
- display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
+      if (operator == undefined){
+        operator = "-"
+    } else { 
+        operate(singleFirst,singleSecond);
+        operator = "-";
+    }
+    display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
 })
+
 multiply.addEventListener("click", () => {
- operator = "*"
- display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
+      if (operator == undefined){
+        operator = "*"
+    } else { 
+        operate(singleFirst,singleSecond);
+        operator = "*";
+    }
+    display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
 })
+
 divide.addEventListener("click", () => {
- operator = "/"
- display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
+      if (operator == undefined){
+        operator = "/"
+    } else {
+         operate(singleFirst,singleSecond);
+         operator = "/";
+    }
+    display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
 })
+
+
+
+
 clr.addEventListener("click", () => {
 firstNumber = []
+singleFirst = firstNumber
 operator = undefined
 secondNumber = []
-console.log(firstNumber,secondNumber)
+singleSecond = secondNumber
+display.textContent = firstNumber,secondNumber
 })
+
 dlt.addEventListener("click", () => {
 
 })
 
+
+
 equals.addEventListener("click", () => {
-    if (operator == "+") {
-        display.textContent = mathAdd(singleFirst,singleSecond)
-    } else if (operator == "-") {
-       display.textContent = mathSubtract(singleFirst,singleSecond)
-    } else if (operator == "*") {
-        display.textContent = mathMultiply(singleFirst,singleSecond)
-    } else if (operator == "/") {
-        display.textContent = mathDivide(singleFirst,singleSecond)
-    }
-firstNumber = []
-operator = undefined
-secondNumber = []
+    operate(singleFirst,singleSecond)
 })
+
+function operate(a,b){
+    if (operator == "+") {
+        display.textContent = mathAdd(a,b)
+    } else if (operator == "-") {
+       display.textContent = mathSubtract(a,b)
+    } else if (operator == "*") {
+        display.textContent = mathMultiply(a,b)
+    } else if (operator == "/") {
+        display.textContent = mathDivide(a,b)
+    }
+    firstNumber = Number(display.textContent)
+    singleFirst = firstNumber
+    operator = undefined
+    secondNumber = []
+}
