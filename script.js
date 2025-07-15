@@ -5,9 +5,10 @@ function mathSubtract(a, b){
     return a - b
 };
 function mathDivide(a,b) {
+    
     if (b == 0) {
         return "NO! BAD!"
-    } else {return a / b}
+    } else {return Math.round((a / b) * 100)/100}
 };
 function mathMultiply(a,b) {
     return a * b
@@ -51,7 +52,7 @@ one.addEventListener("click", () => {
         singleSecond = Number(secondNumber.join(''));
     }
 
-    display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
+    display.textContent = `Math: ${singleFirst||''} ${operator||''} ${singleSecond||''}`
 })
 two.addEventListener("click", () => {
      if (operator == undefined) {
@@ -61,7 +62,7 @@ two.addEventListener("click", () => {
         singleSecond = Number(secondNumber.join(''));
     }
     
-    display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
+    display.textContent = `Math: ${singleFirst||''} ${operator||''} ${singleSecond||''}`
 })
 three.addEventListener("click", () => {
      if (operator == undefined) {
@@ -71,7 +72,7 @@ three.addEventListener("click", () => {
         singleSecond = Number(secondNumber.join(''));
     }
     
-    display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
+    display.textContent = `Math: ${singleFirst||''} ${operator||''} ${singleSecond||''}`
 })
 four.addEventListener("click", () => {
     if (operator == undefined) {
@@ -81,7 +82,7 @@ four.addEventListener("click", () => {
         singleSecond = Number(secondNumber.join(''));
     }
     
-    display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
+    display.textContent = `Math: ${singleFirst||''} ${operator||''} ${singleSecond||''}`
 })
 five.addEventListener("click", () => {
     if (operator == undefined) {
@@ -91,7 +92,7 @@ five.addEventListener("click", () => {
         singleSecond = Number(secondNumber.join(''));
     }
     
-    display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
+    display.textContent = `Math: ${singleFirst||''} ${operator||''} ${singleSecond||''}`
 })
 six.addEventListener("click", () => {
     if (operator == undefined) {
@@ -101,7 +102,7 @@ six.addEventListener("click", () => {
         singleSecond = Number(secondNumber.join(''));
     }
     
-    display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
+    display.textContent = `Math: ${singleFirst||''} ${operator||''} ${singleSecond||''}`
 })
 seven.addEventListener("click", () => {
     if (operator == undefined) {
@@ -111,7 +112,7 @@ seven.addEventListener("click", () => {
         singleSecond = Number(secondNumber.join(''));
     }
     
-    display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
+    display.textContent = `Math: ${singleFirst||''} ${operator||''} ${singleSecond||''}`
 })
 eight.addEventListener("click", () => {
     if (operator == undefined) {
@@ -121,7 +122,7 @@ eight.addEventListener("click", () => {
         singleSecond = Number(secondNumber.join(''));
     }
     
-    display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
+    display.textContent = `Math: ${singleFirst||''} ${operator||''} ${singleSecond||''}`
 })
 nine.addEventListener("click", () => {
     if (operator == undefined) {
@@ -131,7 +132,7 @@ nine.addEventListener("click", () => {
         singleSecond = Number(secondNumber.join(''));
     }
     
-    display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
+    display.textContent = `Math: ${singleFirst||''} ${operator||''} ${singleSecond||''}`
 })
 zero.addEventListener("click", () => {
     if (operator == undefined) {
@@ -141,7 +142,7 @@ zero.addEventListener("click", () => {
         singleSecond = Number(secondNumber.join(''));
     }
     
-    display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
+    display.textContent = `Math: ${singleFirst||''} ${operator||''} ${singleSecond||''}`
 })
 
 
@@ -150,11 +151,12 @@ add.addEventListener("click", () => {
     if (operator == undefined){
         operator = "+"
     } else {
+    
         operate(singleFirst,singleSecond);
         operator = "+";
     }
  
-    display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
+    display.textContent = `Math: ${singleFirst||''} ${operator||''} ${singleSecond||''}`
 })
 
 subtract.addEventListener("click", () => {
@@ -164,7 +166,7 @@ subtract.addEventListener("click", () => {
         operate(singleFirst,singleSecond);
         operator = "-";
     }
-    display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
+    display.textContent = `Math: ${singleFirst||''} ${operator||''} ${singleSecond||''}`
 })
 
 multiply.addEventListener("click", () => {
@@ -174,7 +176,7 @@ multiply.addEventListener("click", () => {
         operate(singleFirst,singleSecond);
         operator = "*";
     }
-    display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
+    display.textContent = `Math: ${singleFirst||''} ${operator||''} ${singleSecond||''}`
 })
 
 divide.addEventListener("click", () => {
@@ -184,7 +186,7 @@ divide.addEventListener("click", () => {
          operate(singleFirst,singleSecond);
          operator = "/";
     }
-    display.textContent = `Math: ${firstNumber} ${operator} ${secondNumber}`
+    display.textContent = `Math: ${singleFirst||''} ${operator||''} ${singleSecond||''}`
 })
 
 
@@ -200,13 +202,18 @@ display.textContent = firstNumber,secondNumber
 })
 
 dlt.addEventListener("click", () => {
+    
 
 })
 
 
-
 equals.addEventListener("click", () => {
-    operate(singleFirst,singleSecond)
+    if (!singleSecond) {
+        return false
+    } else {
+        operate(singleFirst,singleSecond)
+    }
+    
 })
 
 function operate(a,b){
@@ -223,4 +230,5 @@ function operate(a,b){
     singleFirst = firstNumber
     operator = undefined
     secondNumber = []
+    singleSecond = secondNumber
 }
