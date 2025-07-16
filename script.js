@@ -10,8 +10,7 @@ function mathDivide(a,b) {
     } else {return Math.round((a / b) * 100)/100}
 };
 function mathMultiply(a,b) {
-    return a * b
-};
+    return Math.round((a * b) * 100)/100}
 
 const one = document.querySelector("#one");
 const two = document.querySelector("#two");
@@ -145,7 +144,6 @@ zero.addEventListener("click", () => {
 })
 
 
-
 add.addEventListener("click", () => {
     if (operator == undefined){
         operator = "+"
@@ -170,10 +168,10 @@ subtract.addEventListener("click", () => {
 
 multiply.addEventListener("click", () => {
       if (operator == undefined){
-        operator = "*"
+        operator = "x"
     } else { 
         operate(singleFirst,singleSecond);
-        operator = "*";
+        operator = "x";
     }
     display.textContent = `${singleFirst||''} ${operator||''} ${singleSecond||''}`
 })
@@ -189,15 +187,13 @@ divide.addEventListener("click", () => {
 })
 
 
-
-
 clr.addEventListener("click", () => {
 firstNumber = []
 singleFirst = firstNumber
 operator = undefined
 secondNumber = []
 singleSecond = secondNumber
-display.textContent = `${singleFirst||''} ${operator||''} ${singleSecond||''}`
+display.textContent = '\u00A0'
 console.log(typeof(singleFirst))
 })
 
@@ -213,10 +209,7 @@ dlt.addEventListener("click", () => {
         secondNumber = newSecond
         singleSecond = Number(secondNumber.join(''));
     } 
-    
     display.textContent =  `${singleFirst||''} ${operator||''} ${singleSecond||''}`
-
-   
 })
 
 
@@ -234,7 +227,7 @@ function operate(a,b){
         display.textContent = mathAdd(a,b)
     } else if (operator == "-") {
        display.textContent = mathSubtract(a,b)
-    } else if (operator == "*") {
+    } else if (operator == "x") {
         display.textContent = mathMultiply(a,b)
     } else if (operator == "/") {
         display.textContent = mathDivide(a,b)
