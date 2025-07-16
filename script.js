@@ -209,7 +209,7 @@ dlt.addEventListener("click", () => {
         secondNumber = newSecond
         singleSecond = Number(secondNumber.join(''));
     } 
-    display.textContent =  `${singleFirst||''} ${operator||''} ${singleSecond||''}`
+    display.textContent =  `${singleFirst||'\u00A0'} ${operator||''} ${singleSecond||''}`
 })
 
 
